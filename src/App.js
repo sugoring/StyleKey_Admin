@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // 수정
 import AdminLoginPage from './components/AdminLoginPage';
 import AdminNavbar from './components/AdminNavbar';
 import Dashboard from './pages/Admin/Dashboard'; // 수정
@@ -17,16 +17,16 @@ function App() {
         <AdminNavbar />
         
         {/* 페이지 라우팅 */}
-        <Switch>
-          <Route path="/admin/login" component={AdminLoginPage} />
-          <Route path="/admin/dashboard" component={Dashboard} /> {/* 수정 */}
-          <Route path="/user-management" component={UserManagementPage} />
-          <Route path="/style-point-management" component={StylePointManagementPage} />
-          <Route path="/brand-management" component={BrandManagementPage} />
-          <Route path="/coordinate-look-management" component={CoordinateLookManagementPage} />
-          <Route path="/item-management" component={ItemManagementPage} />
+        <Routes> {/* 수정 */}
+          <Route path="/admin/login" element={<AdminLoginPage />} />
+          <Route path="/admin/dashboard" element={<Dashboard />} /> {/* 수정 */}
+          <Route path="/user-management" element={<UserManagementPage />} />
+          <Route path="/style-point-management" element={<StylePointManagementPage />} />
+          <Route path="/brand-management" element={<BrandManagementPage />} />
+          <Route path="/coordinate-look-management" element={<CoordinateLookManagementPage />} />
+          <Route path="/item-management" element={<ItemManagementPage />} />
           {/* 추가 페이지 라우팅 */}
-        </Switch>
+        </Routes> {/* 수정 */}
       </div>
     </Router>
   );
