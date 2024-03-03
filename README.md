@@ -1,61 +1,70 @@
-# StyleKey_Admin
-관리자 페이지
-관리자는 StyleKey에 대한 관리기능을 admin page에서 수행합니다.
+# Getting Started with Create React App
 
-## 개발 목표
-- 구조화: 관리자 로그인 페이지, 회원 관리 페이지, 스타일포인트 관리 페이지("Brand" 관리, "CoordinateLook-Item" 관리) 구분
-- 보안 및 접근 제어
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
----
-# 기능
-- 검색 및 필터링 기능: AJAX를 사용하여 페이지를 새로고침하지 않고도 필터링 결과를 동적으로 업데이트한다.
-- 보안 및 접근 제어: Role 기반 접근 제어 리스트에 따른 관리자만이 접근 권한을 가지고 있다.
+## Available Scripts
 
----
-# 세부 기능
+In the project directory, you can run:
 
-# 관리자 로그인 페이지
-- ID, Password 로그인
-- Forget Password
+### `npm start`
 
-# 회원 관리 페이지
-- User 구성 요소: Long id, String name, String email, Role role, OAuthProvider oAuthProvider, String provider
-- R(조회) 기능 제공
-- 메인 페이지 : 조회 리스트 페이지 
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-# 스타일포인트 관리 페이지
-- 스타일포인트를 기준으로 한 관리 기능을 제공한다. 이는 스타일포인트 ID를 사용하여 코디룩 목록과 브랜드 목록을 조회하는 기능을 포함한다.
-- 스타일포인트 관리 페이지는 스타일포인트 ID 네비게이션이 있다. 각각의 네비게이션을 클릭하면 "스타일포인트 ID에 해당하는 코디룩 목록 전체 조회, 스타일포인트 ID에 해당하는 브랜드 목록 전체 조회"를 한다.
-- 가장 중요한 것은 페이지 이동시마다 스타일포인트 ID를 가지고 있다는 것이다. 이 스타일포인트 ID를 코디룩 정보 등록, 브랜드 정보 등록할때 사용한다.
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-## "StylePoint" 관리
-- StylePoint 구성 요소: Long id, String title, String description, String image
-- R(조회) 기능 제공: 스타일포인트 단건 정보 조회 / 스타일포인트 전체 정보 조회
-- U(수정) 기능 제공: 스타일포인트 정보 수정
+### `npm test`
 
-## "Brand" 관리
-- Brand 구성 요소: Long id, String title, String title_eng, String description, String site_url, String image, Long stylePointId
-- C(생성) 기능 제공: 브랜드 정보 등록
-- R(조회) 기능 제공: 브랜드 정보 단건 조회 / 브랜드 정보 전체 조회 / 스타일포인트 ID에 해당하는 브랜드 목록 전체 조회
-- U(수정) 기능 제공: 브랜드 정보 수정
-- D(삭제) 기능 제공: 브랜드 정보 삭제
-- 메인 페이지 : 스타일포인트 ID에 해당하는 브랜드 목록 전체 조회
-- 서브 페이지 : 브랜드 정보 등록 페이지
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `npm run build`
 
-## "CoordinateLook-Item" 관리
-- CoordinateLook 관리에서 Item 관리도 포함되는 것이다.
-- CoordinateLook 구성 요소: Long id, String title, String image, Long stylePointId, List<ItemResponse> items
-- C(생성) 기능 제공: 코디룩 정보 등록 (아이템도 함꼐 등록된다.)
-- R(조회) 기능 제공: 코디룩 단건 조회. 해당 코디룩 안에 속한 아이템을 함께 반환한다. / 코디룩 정보 전체 조회 / 스타일포인트 ID에 해당하는 코디룩 목록 전체 조회
-- U(수정) 기능 제공: 코디룩 정보 수정
-- D(삭제) 기능 제공: 코디룩에 속한 아이템 삭제 / 코디룩 정보 삭제
-- 메인 페이지 : 스타일포인트 ID에 해당하는 코디룩 목록 전체 조회
-- 서브 페이지 :
-  ## "Item" 관리
-  - Item 구성 요소: Long id, String title, String sales_link, String image, Long brandId, Long categoryId, Long coordinateLookId
-  - R(조회) 기능 제공: 아이템 정보 단건 조회 / 아이템 정보 전체 조회 / 코디룩 ID에 해당하는 아이템 목록 전체 조회
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `npm run eject`
 
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
