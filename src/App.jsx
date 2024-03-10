@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // 수정
 import AdminLoginPage from './components/AdminLoginPage';
 import AdminNavbar from './components/AdminNavbar';
-import Dashboard from './pages/Admin/Dashboard'; // 수정
+import Dashboard from './pages/Login/Dashboard'; // 수정
 import UserManagementPage from './components/UserManagementPage';
 import StylePointManagementPage from './components/StylePointManagementPage';
 import BrandManagementPage from './components/BrandManagementPage';

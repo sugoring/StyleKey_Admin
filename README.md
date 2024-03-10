@@ -22,16 +22,17 @@
 ---
 # 세부 기능
 
-# 관리자 로그인 페이지
-- ID, Password 로그인
-- Forget Password
+## [login](https://github.com/sugoring/StyleKey_Admin/issues/4)
+- 서버 통신: axios
+- 상태 관리: Redux
+- Component, Form, React Hooks
 
-# 회원 관리 페이지
+## 회원 관리 페이지
 - User 구성 요소: Long id, String name, String email, Role role, OAuthProvider oAuthProvider, String provider
 - R(조회) 기능 제공
 - 메인 페이지 : 조회 리스트 페이지 
 
-# 스타일포인트 관리 페이지
+## 스타일포인트 관리 페이지
 - 스타일포인트를 기준으로 한 관리 기능을 제공한다. 이는 스타일포인트 ID를 사용하여 코디룩 목록과 브랜드 목록을 조회하는 기능을 포함한다.
 - 스타일포인트 관리 페이지는 스타일포인트 ID 네비게이션이 있다. 각각의 네비게이션을 클릭하면 "스타일포인트 ID에 해당하는 코디룩 목록 전체 조회, 스타일포인트 ID에 해당하는 브랜드 목록 전체 조회"를 한다.
 - 가장 중요한 것은 페이지 이동시마다 스타일포인트 ID를 가지고 있다는 것이다. 이 스타일포인트 ID를 코디룩 정보 등록, 브랜드 정보 등록할때 사용한다.
