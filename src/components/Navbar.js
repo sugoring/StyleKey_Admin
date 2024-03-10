@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function AdminNavbar() {
+function Navbar() {
   // 예시로 로그인 상태를 true로 가정합니다.
   const isLoggedIn = true;
 
@@ -41,4 +41,4 @@ function AdminNavbar() {
   );
 }
 
-export default AdminNavbar;
+export default Navbar;

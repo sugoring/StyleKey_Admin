@@ -7,31 +7,29 @@
 - 자바스크립트, JSX(babel)
 
 ## 개발 환경 설정
-- **에디터(IDE, Code Editor):**: VSCode
-- **필수 설치 소프트웨어:** Node.js(v16.16.0), npm (v9.6.7)
+- 에디터(IDE, Code Editor):: VSCode
+- 필수 설치 소프트웨어: Node.js(v16.16.0), npm (v9.6.7)
+- 서버 통신: axios
+- 상태 관리: Redux
 
 ---
-## 개발 목표
-- 구조화: 관리자 로그인 페이지, 회원 관리 페이지, 스타일포인트 관리 페이지(브랜드 관리, 코디룩-아이템 관리) 구분
-- 보안 및 접근 제어
+# [login](https://github.com/sugoring/StyleKey_Admin/issues/4)
+### 로그인 과정
+- **사용자 입력 관리**: 로그인(Login.jsx)에서 ID와 비밀번호를 입력할 때 React의 useState 훅을 사용하여 입력 값을 상태로 관리함, onChange 이벤트 핸들러를 통해 사용자가 입력 필드에 타이핑할 때마다 상태 업데이트함
+- **LoginFunc - 유효성 검사**: 로그인(Login.jsx)에 있는 로그인 버튼을 클릭하면, id와 pw가 유효한지 검사하는 함수(LoginFunc)가 호출함
+- **LogoutFunc - 로그아웃**: 대시보드(Dashboard.jsx)에 있는 로그아웃 버튼을 클릭하면, 로그아웃을 처리하는 함수(LogoutFunc)를 호출함
+### axios 통신 
+-  **UI 제어**: axios 통신을 하는 동안, 중복 요청을 방지하기 위해 버튼을 비활성화(disabled) 상태로 변경함
+- **로그인 성공**: userSlice.js에서 Redux를 통해 유저 정보를 포함한 응답 데이터를 상태로 저장함
 
----
-# 기능
-- 검색 및 필터링: AJAX를 사용한 동적 결과 업데이트
-- 보안 및 접근 제어: Role 기반 접근 제어
----
-# 세부 기능
+----
 
-# 관리자 로그인 페이지
-- ID, Password 로그인
-- Forget Password
-
-# 회원 관리 페이지
+## 회원 관리 페이지
 - User 구성 요소: Long id, String name, String email, Role role, OAuthProvider oAuthProvider, String provider
 - R(조회) 기능 제공
 - 메인 페이지 : 조회 리스트 페이지 
 
-# 스타일포인트 관리 페이지
+## 스타일포인트 관리 페이지
 - 스타일포인트를 기준으로 한 관리 기능을 제공한다. 이는 스타일포인트 ID를 사용하여 코디룩 목록과 브랜드 목록을 조회하는 기능을 포함한다.
 - 스타일포인트 관리 페이지는 스타일포인트 ID 네비게이션이 있다. 각각의 네비게이션을 클릭하면 "스타일포인트 ID에 해당하는 코디룩 목록 전체 조회, 스타일포인트 ID에 해당하는 브랜드 목록 전체 조회"를 한다.
 - 가장 중요한 것은 페이지 이동시마다 스타일포인트 ID를 가지고 있다는 것이다. 이 스타일포인트 ID를 코디룩 정보 등록, 브랜드 정보 등록할때 사용한다.
