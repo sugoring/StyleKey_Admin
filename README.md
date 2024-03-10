@@ -7,8 +7,9 @@
 - 자바스크립트, JSX(babel)
 
 ## 개발 환경 설정
-- **에디터(IDE, Code Editor):**: VSCode
-- **필수 설치 소프트웨어:** Node.js(v16.16.0), npm (v9.6.7)
+- 에디터(IDE, Code Editor):: VSCode
+- 필수 설치 소프트웨어: Node.js(v16.16.0), npm (v9.6.7)
+- 서버 통신: axios
 
 ---
 ## 개발 목표
