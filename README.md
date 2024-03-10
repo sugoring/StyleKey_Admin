@@ -1,16 +1,24 @@
 # StyleKey_Admin
-관리자 페이지
-관리자는 StyleKey에 대한 관리기능을 admin page에서 수행합니다.
+ **서비스 페이지**: [StyleKey GitHub 페이지](https://github.com/styleKey)
 
+---
+## 기술 스택
+- [React](https://ko.legacy.reactjs.org/docs/getting-started.html)
+- 자바스크립트, JSX(babel)
+
+## 개발 환경 설정
+- **에디터(IDE, Code Editor):**: VSCode
+- **필수 설치 소프트웨어:** Node.js(v16.16.0), npm (v9.6.7)
+
+---
 ## 개발 목표
-- 구조화: 관리자 로그인 페이지, 회원 관리 페이지, 스타일포인트 관리 페이지("Brand" 관리, "CoordinateLook-Item" 관리) 구분
+- 구조화: 관리자 로그인 페이지, 회원 관리 페이지, 스타일포인트 관리 페이지(브랜드 관리, 코디룩-아이템 관리) 구분
 - 보안 및 접근 제어
 
 ---
 # 기능
-- 검색 및 필터링 기능: AJAX를 사용하여 페이지를 새로고침하지 않고도 필터링 결과를 동적으로 업데이트한다.
-- 보안 및 접근 제어: Role 기반 접근 제어 리스트에 따른 관리자만이 접근 권한을 가지고 있다.
-
+- 검색 및 필터링: AJAX를 사용한 동적 결과 업데이트
+- 보안 및 접근 제어: Role 기반 접근 제어
 ---
 # 세부 기능
 
@@ -52,7 +60,7 @@
 - D(삭제) 기능 제공: 코디룩에 속한 아이템 삭제 / 코디룩 정보 삭제
 - 메인 페이지 : 스타일포인트 ID에 해당하는 코디룩 목록 전체 조회
 - 서브 페이지 :
-  ## "Item" 관리
+  ### "Item" 관리
   - Item 구성 요소: Long id, String title, String sales_link, String image, Long brandId, Long categoryId, Long coordinateLookId
   - R(조회) 기능 제공: 아이템 정보 단건 조회 / 아이템 정보 전체 조회 / 코디룩 ID에 해당하는 아이템 목록 전체 조회
 
