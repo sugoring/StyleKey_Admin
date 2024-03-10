@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { loginUser } from '../reducer/userSlice'; 
+import { loginUser } from '../reducers/userSlice'; 
 import axios from "axios";
 
 function Login() {
@@ -61,7 +61,14 @@ function Login() {
           default:
             break;
         }
+      }
+      )
+      .catch((error) => {
+        console.error("Login error:", error);
+        setMsg("로그인 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요.");
+        setLoading(false); // 에러 발생 시 로딩 상태 해제
       });
+      ;
     }
     setLoading(true);
   };

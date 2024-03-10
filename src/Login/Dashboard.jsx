@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { clearUser } from '../reducer/userSlice.js'; 
+import { clearUser } from '../reducers/userSlice.js'; 
 
 function Dashboard() {
   const user = useSelector((state) => state.user);

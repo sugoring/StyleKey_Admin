@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
-import Login from './pages/Login/Login';
-import Dashboard from './pages/Dashboard/Dashboard'; 
+import Login from './Login/Login.jsx';
+import Dashboard from './Login/Dashboard.jsx'; 
 
-import AdminNavbar from './components/AdminNavbar';
+import Navbar from './components/Navbar';
 import UserManagementPage from './components/UserManagementPage';
 import StylePointManagementPage from './components/StylePointManagementPage';
 import BrandManagementPage from './components/BrandManagementPage';
@@ -19,7 +19,7 @@ function App() {
     <Router>
       <div>
 
-      {isLogin && <AdminNavbar />}
+      {isLogin && <Navbar />}
         
         <Routes>
           <Route path="/" element={isLogin ? <Navigate to="/admin/dashboard" /> : <Navigate to="/admin/login" />} />

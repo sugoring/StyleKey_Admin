@@ -10,23 +10,19 @@
 - 에디터(IDE, Code Editor):: VSCode
 - 필수 설치 소프트웨어: Node.js(v16.16.0), npm (v9.6.7)
 - 서버 통신: axios
-
----
-## 개발 목표
-- 구조화: 관리자 로그인 페이지, 회원 관리 페이지, 스타일포인트 관리 페이지(브랜드 관리, 코디룩-아이템 관리) 구분
-- 보안 및 접근 제어
-
----
-# 기능
-- 검색 및 필터링: AJAX를 사용한 동적 결과 업데이트
-- 보안 및 접근 제어: Role 기반 접근 제어
----
-# 세부 기능
-
-## [login](https://github.com/sugoring/StyleKey_Admin/issues/4)
-- 서버 통신: axios
 - 상태 관리: Redux
-- Component, Form, React Hooks
+
+---
+# [login](https://github.com/sugoring/StyleKey_Admin/issues/4)
+### 로그인 과정
+- **사용자 입력 관리**: 로그인(Login.jsx)에서 ID와 비밀번호를 입력할 때 React의 useState 훅을 사용하여 입력 값을 상태로 관리함, onChange 이벤트 핸들러를 통해 사용자가 입력 필드에 타이핑할 때마다 상태 업데이트함
+- **LoginFunc - 유효성 검사**: 로그인(Login.jsx)에 있는 로그인 버튼을 클릭하면, id와 pw가 유효한지 검사하는 함수(LoginFunc)가 호출함
+- **LogoutFunc - 로그아웃**: 대시보드(Dashboard.jsx)에 있는 로그아웃 버튼을 클릭하면, 로그아웃을 처리하는 함수(LogoutFunc)를 호출함
+### axios 통신 
+-  **UI 제어**: axios 통신을 하는 동안, 중복 요청을 방지하기 위해 버튼을 비활성화(disabled) 상태로 변경함
+- **로그인 성공**: userSlice.js에서 Redux를 통해 유저 정보를 포함한 응답 데이터를 상태로 저장함
+
+----
 
 ## 회원 관리 페이지
 - User 구성 요소: Long id, String name, String email, Role role, OAuthProvider oAuthProvider, String provider
