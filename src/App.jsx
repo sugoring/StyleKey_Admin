@@ -19,7 +19,7 @@ function App() {
     <Router>
       <div>
 
-        <AdminNavbar />
+      {isLogin && <AdminNavbar />}
         
         <Routes>
           <Route path="/" element={isLogin ? <Navigate to="/admin/dashboard" /> : <Navigate to="/admin/login" />} />
