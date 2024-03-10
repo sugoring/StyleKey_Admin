@@ -16,15 +16,15 @@ export const userSlice = createSlice({
       state.name = name;
       state.id = id;
       state.isLogin = true;
-      state.isLoading = false; // 로그인 시도 후 로딩 상태 해제 예시
+      state.isLoading = false; 
     },
     clearUser: (state) => {
       state.name = initialState.name;
       state.id = initialState.id;
-      state.isLogin = false; // 명시적으로 로그아웃 상태 설정
-      state.isLoading = false; // 필요에 따라 추가
+      state.isLogin = false; 
+      state.isLoading = false;
     },
-    // 필요에 따라 로딩 상태를 관리할 수 있는 액션 추가
+
     setLoading: (state, action) => {
       state.isLoading = action.payload;
     },
