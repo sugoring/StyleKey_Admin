@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import stylePointsReducer from './stylePointsSlice';
+import brandsReducer from './brandsSlice';
+import coordinateLooksReducer from './coordinateLooksSlice';
 
-// Redux 스토어 설정
-export const store = configureStore({
+const store = configureStore({
   reducer: {
     stylePoints: stylePointsReducer,
-    // 다른 리듀서들이 있다면 이곳에 추가할 수 있습니다.
-  },
+    brands: brandsReducer,
+    coordinateLooks: coordinateLooksReducer
+  }
 });
 
 export default store;
