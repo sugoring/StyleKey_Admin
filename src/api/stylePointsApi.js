@@ -1,36 +1,36 @@
 import axios from 'axios';
 
-// Axios 인스턴스 생성
-const apiClient = axios.create({
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
+const API_URL = '/admin/style-points'; // 또는 실제 배포 서버 URL
 
-export const readAllStylePoint = async () => {
+// 스타일포인트 전체 정보 조회
+export const fetchAllStylePoints = async () => {
   try {
-    const response = await apiClient.get('/admin/style-points');
-    return response.data; // 성공 시 데이터 반환
+    const response = await axios.get(`${API_URL}`);
+    return response.data;
   } catch (error) {
-    throw error; // 에러 처리
+    console.error('fetchAllStylePoints Error:', error);
+    throw error;
   }
 };
 
-export const readOneStylePoint = async (id) => {
+// 스타일포인트 단건 정보 조회
+export const fetchStylePointById = async (id) => {
   try {
-    const response = await apiClient.get(`/admin/style-points/${id}`);
-    return response.data; // 성공 시 데이터 반환
+    const response = await axios.get(`${API_URL}/${id}`);
+    return response.data;
   } catch (error) {
-    throw error; // 에러 처리
+    console.error('fetchStylePointById Error:', error);
+    throw error;
   }
 };
 
-export const updateStylePoint = async (id) => {
+// 스타일포인트 정보 수정
+export const updateStylePoint = async (id, stylePointData) => {
   try {
-    const response = await apiClient.put(`/admin/style-points/${id}`);
-    return response.data; // 성공 시 데이터 반환
+    const response = await axios.put(`${API_URL}/${id}`, stylePointData);
+    return response.data;
   } catch (error) {
-    throw error; // 에러 처리
+    console.error('updateStylePoint Error:', error);
+    throw error;
   }
 };
-

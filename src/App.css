@@ -1,76 +1,37 @@
-/* App.css */
-
-body, html {
+/* 전반적인 스타일 */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background-color: #f4f4f4;
 }
 
-/* 네비게이션 바 스타일 */
-.navbar {
-  background-color: #333;
-  color: white;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nav-link {
-  color: white;
-  text-decoration: none;
-  margin-left: 15px;
-}
-
-.nav-link:hover {
-  color: #ccc;
-}
-
-/* 페이지 컨텐츠 스타일 */
-.page-content {
-  padding: 20px;
-}
-
-/* 테이블 스타일 */
-.table {
-  width: 100%;
+/* 표 스타일 */
+table {
   border-collapse: collapse;
+  width: 100%;
 }
 
-.table th, .table td {
+table, th, td {
+  border: 1px solid #ccc;
+}
+
+th, td {
+  padding: 10px;
   text-align: left;
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
 }
 
-/* 버튼 스타일 */
-.button {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
+th {
+  background-color: #eee;
 }
 
-.button:hover {
-  background-color: #0056b3;
-}
-
-/* 오류 메시지 스타일 */
-.error-message {
-  color: #ff0000;
-}
-
-/* 로딩 인디케이터 스타일 */
-.loading-indicator {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
+/* 이미지 스타일 */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px; /* 예시로 추가한 이미지에 둥근 모서리 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
 }

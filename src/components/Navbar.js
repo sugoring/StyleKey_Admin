@@ -1,18 +1,22 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+function Navbar() {
   return (
     <nav>
       <ul>
         <li>
-          <NavLink to="/" exact activeClassName="active">
-            Home
-          </NavLink>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/brand/create">Create Brand</Link>
+        </li>
+        <li>
+          <Link to="/coordinate-look/create">Create Coordinate Look</Link>
         </li>
       </ul>
     </nav>
   );
-};
+}
 
 export default Navbar;
