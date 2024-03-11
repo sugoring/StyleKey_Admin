@@ -1,65 +1,23 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
-import { useSelector } from "react-redux";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar'; // 경로는 실제 구조에 맞게 조정해주세요
+import StylePointsPage from './features/stylePoints/StylePointsPage'; // 경로는 실제 구조에 맞게 조정해주세요
+import StylePointDetails from './features/stylePoints/StylePointDetails'; // 경로는 실제 구조에 맞게 조정해주세요
+// 다른 컴포넌트 임포트는 여기에 추가
 
-import Login from "./Login/Login.jsx";
-import Dashboard from "./Login/Dashboard.jsx";
-
-import Navbar from "./components/Navbar";
-import UserManagementPage from "./components/UserManagementPage";
-import StylePointManagementPage from "./components/StylePointManagementPage";
-import BrandManagementPage from "./components/BrandManagementPage";
-import CoordinateLookManagementPage from "./components/CoordinateLookManagementPage";
-import ItemManagementPage from "./components/ItemManagementPage";
-
-function App() {
-  const { isLogin } = useSelector((state) => state.user);
-
+const App = () => {
   return (
     <Router>
       <>
         <Navbar />
         <Routes>
-          {/* Redirect users to the dashboard as the main page */}
-          <Route path="/" element={<Navigate to="/admin/dashboard" />} />
-
-          {/* Admin routes */}
-          <Route path="/admin/login" element={<Login />} />
-          <Route path="/admin/dashboard" element={<Dashboard />} />
-
-          {/* Management pages */}
-          <Route path="/user-management" element={<UserManagementPage />} />
-          <Route
-            path="/style-point-management"
-            element={<StylePointManagementPage />}
-          />
-          <Route path="/brand-management" element={<BrandManagementPage />} />
-          <Route
-            path="/coordinate-look-management"
-            element={<CoordinateLookManagementPage />}
-          />
-          <Route path="/item-management" element={<ItemManagementPage />} />
+          <Route path="/style-points" element={<StylePointsPage />} />
+          <Route path="/style-points/:id" element={<StylePointDetails />} />
+          {/* 여기에 다른 경로와 컴포넌트를 매핑 */}
         </Routes>
-
-        {/* {isLogin && <Navbar />} */
-        /* <Routes> */
-        /*   <Route path="/" element={isLogin ? <Navigate to="/admin/dashboard" /> : <Navigate to="/admin/login" />} /> */
-        /*   <Route path="/admin/login" element={<Login />} /> */
-        /*   <Route path="/admin/dashboard" element={isLogin ? <Dashboard /> : <Navigate to="/admin/login" />} /> */
-        /*   <Route path="/user-management" element={isLogin ? <UserManagementPage /> : <Navigate to="/admin/login" />} /> */
-        /*   <Route path="/style-point-management" element={isLogin ? <StylePointManagementPage /> : <Navigate to="/admin/login" />} /> */
-        /*   <Route path="/brand-management" element={isLogin ? <BrandManagementPage /> : <Navigate to="/admin/login" />} /> */
-        /*   <Route path="/coordinate-look-management" element={isLogin ? <CoordinateLookManagementPage /> : <Navigate to="/admin/login" />} /> */
-        /*   <Route path="/item-management" element={isLogin ? <ItemManagementPage /> : <Navigate to="/admin/login" />} /> */
-        /* </Routes> */}
       </>
     </Router>
   );
-}
+};
 
 export default App;

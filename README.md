@@ -9,30 +9,25 @@
 ## 개발 환경 설정
 - 에디터(IDE, Code Editor):: VSCode
 - 필수 설치 소프트웨어: Node.js(v16.16.0), npm (v9.6.7)
-- 서버 통신: axios
-- 상태 관리: Redux
+- 서버 통신: axios, proxy 9000 port
+- 상태 관리: Redux - @reduxjs/toolki(모듈화)
 
----
-# [login](https://github.com/sugoring/StyleKey_Admin/issues/4)
-### 로그인 과정
-- **사용자 입력 관리**: 로그인(Login.jsx)에서 ID와 비밀번호를 입력할 때 React의 useState 훅을 사용하여 입력 값을 상태로 관리함, onChange 이벤트 핸들러를 통해 사용자가 입력 필드에 타이핑할 때마다 상태 업데이트함
-- **LoginFunc - 유효성 검사**: 로그인(Login.jsx)에 있는 로그인 버튼을 클릭하면, id와 pw가 유효한지 검사하는 함수(LoginFunc)가 호출함
-- **LogoutFunc - 로그아웃**: 대시보드(Dashboard.jsx)에 있는 로그아웃 버튼을 클릭하면, 로그아웃을 처리하는 함수(LogoutFunc)를 호출함
-### axios 통신 
--  **UI 제어**: axios 통신을 하는 동안, 중복 요청을 방지하기 위해 버튼을 비활성화(disabled) 상태로 변경함
-- **로그인 성공**: userSlice.js에서 Redux를 통해 유저 정보를 포함한 응답 데이터를 상태로 저장함
 
 ----
+프록시 9000
+## 스타일포인트 페이지
+- 스타일 포인트 모든 항목을 읽어 스타일 포인트 항목의 네비바를 만든다 스타일포인트 ID 네비게이션이 있다. 각각의 네비게이션을 클릭하면 "스타일포인트 ID에 해당하는 코디룩 목록 전체 조회, 스타일포인트 ID에 해당하는 브랜드 목록 전체 조회"를 한다. GET
+/admin/style-points
+Read All StylePoint
+- 스타일포인트를 기준으로 한 관리 기능을 제공한다. /admin/style-points/{id}
+Read One StylePoint 이는 스타일포인트 ID를 사용하여 코디룩 목록과 브랜드 목록을 조회하는 기능을 포함한다. GET
+/admin/brands/style-points/{id}
+Read All Brands By StylePointId
+GET
+/admin/coordinate-looks/style-points/{id}
+Read All CoordinateLooks By StylePointId
+- 가장 중요한 것은 한 스타일 포인트를 저장하고 있고, 다른 스타일 포인트를 클릭하면 상태를 변경한다. 따라서 페이지 이동시마다 선택된 스타일포인트 ID를 가지고 있다는 것이다. 이 스타일포인트 ID를 코디룩 정보 등록, 브랜드 정보 등록할때도 사용한다.
 
-## 회원 관리 페이지
-- User 구성 요소: Long id, String name, String email, Role role, OAuthProvider oAuthProvider, String provider
-- R(조회) 기능 제공
-- 메인 페이지 : 조회 리스트 페이지 
-
-## 스타일포인트 관리 페이지
-- 스타일포인트를 기준으로 한 관리 기능을 제공한다. 이는 스타일포인트 ID를 사용하여 코디룩 목록과 브랜드 목록을 조회하는 기능을 포함한다.
-- 스타일포인트 관리 페이지는 스타일포인트 ID 네비게이션이 있다. 각각의 네비게이션을 클릭하면 "스타일포인트 ID에 해당하는 코디룩 목록 전체 조회, 스타일포인트 ID에 해당하는 브랜드 목록 전체 조회"를 한다.
-- 가장 중요한 것은 페이지 이동시마다 스타일포인트 ID를 가지고 있다는 것이다. 이 스타일포인트 ID를 코디룩 정보 등록, 브랜드 정보 등록할때 사용한다.
 
 ## "StylePoint" 관리
 - StylePoint 구성 요소: Long id, String title, String description, String image

@@ -1,13 +1,14 @@
+// src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App'; // App 컴포넌트를 임포트합니다.
 import { Provider } from 'react-redux';
-import store from './reducers/store'; // store 구성
+import store from './reducers/store'; // Adjust the import path as needed
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App /> 
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
