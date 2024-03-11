@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setSelectedStylePointId } from '../../reducers/stylePointsSlice';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 
 const StylePointsPage = () => {
   const [stylePoints, setStylePoints] = useState([]);
   const dispatch = useDispatch();
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,6 +24,7 @@ const StylePointsPage = () => {
 
   const handleStylePointClick = (stylePointId) => {
     dispatch(setSelectedStylePointId(stylePointId)); // Dispatching action to store selected style point ID
+    navigate(`/stylepoint/${stylePointId}`); // Navigate to StylePointDetails with the selected ID
   };
 
   return (
@@ -34,7 +37,7 @@ const StylePointsPage = () => {
             <th>Title</th>
             <th>Description</th>
             <th>Image</th>
-            <th>Select</th> {/* Add a new column for selection button */}
+            <th>Select</th>
           </tr>
         </thead>
         <tbody>
@@ -48,7 +51,7 @@ const StylePointsPage = () => {
               </td>
               <td>
                 <button onClick={() => handleStylePointClick(stylePoint.id)}>Select</button>
-              </td> {/* Button to select style point */}
+              </td>
             </tr>
           ))}
         </tbody>
