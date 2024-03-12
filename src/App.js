@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Selectedbar from "./components/Selectedbar"; // SelectedBar 컴포넌트를 import
+import Selectedbar from "./components/Selectedbar"; 
 
 import StylePointsPage from "./features/stylePoints/StylePointsPage";
 import StylePointDetails from "./features/stylePoints/StylePointDetails";
