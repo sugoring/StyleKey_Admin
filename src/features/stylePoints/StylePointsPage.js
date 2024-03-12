@@ -2,29 +2,36 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setSelectedStylePointId } from '../../reducers/stylePointsSlice';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import { useNavigate } from 'react-router-dom';
+
+// Abstracted API call into a separate function for better testing and reusability
+const fetchStylePoints = async () => {
+  try {
+    const response = await axios.get('/admin/style-points');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching style points:', error);
+    return []; // Return empty array in case of error to avoid app crash
+  }
+};
 
 const StylePointsPage = () => {
   const [stylePoints, setStylePoints] = useState([]);
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await axios.get('/admin/style-points');
-        setStylePoints(response.data);
-      } catch (error) {
-        console.error('Error fetching style points:', error);
-      }
+      const data = await fetchStylePoints();
+      setStylePoints(data);
     };
 
     fetchData();
   }, []);
 
   const handleStylePointClick = (stylePointId) => {
-    dispatch(setSelectedStylePointId(stylePointId)); // Dispatching action to store selected style point ID
-    navigate(`/stylepoint/${stylePointId}`); // Navigate to StylePointDetails with the selected ID
+    dispatch(setSelectedStylePointId(stylePointId));
+    navigate(`/stylepoint/${stylePointId}`);
   };
 
   return (
@@ -47,7 +54,7 @@ const StylePointsPage = () => {
               <td>{stylePoint.title}</td>
               <td>{stylePoint.description}</td>
               <td>
-                <img src={stylePoint.image} alt={stylePoint.title} />
+                <img src={stylePoint.image} alt={stylePoint.title} style={{ width: '100px', height: 'auto' }} />
               </td>
               <td>
                 <button onClick={() => handleStylePointClick(stylePoint.id)}>Select</button>
