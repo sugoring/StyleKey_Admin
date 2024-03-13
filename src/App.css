@@ -1,37 +1,38 @@
-/* 전반적인 스타일 */
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-  margin: 0;
-  padding: 0;
+.App {
+  text-align: center;
 }
 
-/* 표 스타일 */
-table {
-  border-collapse: collapse;
-  width: 100%;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
-table, th, td {
-  border: 1px solid #ccc;
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
-th, td {
-  padding: 10px;
-  text-align: left;
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
-th {
-  background-color: #eee;
+.App-link {
+  color: #61dafb;
 }
 
-/* 이미지 스타일 */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  border-radius: 8px; /* 예시로 추가한 이미지에 둥근 모서리 */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
