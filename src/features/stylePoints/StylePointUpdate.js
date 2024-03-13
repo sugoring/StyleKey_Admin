@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
 
 const StylePointUpdate = () => {
   const { id } = useParams();
@@ -13,7 +13,7 @@ const StylePointUpdate = () => {
         const response = await axios.get(`/admin/style-points/${id}`);
         setStylePoint(response.data);
       } catch (error) {
-        console.error('Error fetching style point:', error);
+        console.error("Error fetching style point:", error);
       }
     };
 
@@ -21,19 +21,33 @@ const StylePointUpdate = () => {
   }, [id]);
 
   const handleImageChange = (event) => {
-    // Handle image selection and preview here
+    const file = event.target.files[0]; // Get the selected file
+    const reader = new FileReader(); // Initialize a file reader
+
+    reader.onloadend = () => {
+      // Once the reader finishes loading the file
+      // Set the stylePoint state with the updated image URL
+      setStylePoint({ ...stylePoint, image: reader.result });
+    };
+
+    // Read the file as a data URL (for preview)
+    reader.readAsDataURL(file);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      // Assuming your API endpoint for updating style point is '/admin/style-points/{id}'
-      await axios.put(`/admin/style-points/${id}`, stylePoint);
-      navigate('/previous-page'); // Change '/previous-page' to your actual previous page route
+      const response = await axios.put(`/admin/style-points/${id}`, stylePoint);
+      if ( response.status === 500 || response.data.code === 500 || response.code === 500
+      ) {
+        alert("서버 내부 오류가 발생하였습니다.");
+      } else {
+        navigate(`/stylepoint/${id}`);
+      } 
     } catch (error) {
-      console.error('Error updating style point:', error);
-      // Handle error here (e.g., display error message to user)
+      console.error("Error updating style point:", error);
+      alert("Failed to update style point. Please try again later.");
     }
   };
 
@@ -48,7 +62,7 @@ const StylePointUpdate = () => {
         <table>
           <tbody>
             <tr>
-              <td>Title:</td>
+              <td>Title</td>
               <td>
                 <input
                   type="text"
@@ -60,18 +74,21 @@ const StylePointUpdate = () => {
               </td>
             </tr>
             <tr>
-              <td>Description:</td>
+              <td>Description</td>
               <td>
                 <textarea
                   value={stylePoint.description}
                   onChange={(e) =>
-                    setStylePoint({ ...stylePoint, description: e.target.value })
+                    setStylePoint({
+                      ...stylePoint,
+                      description: e.target.value,
+                    })
                   }
                 />
               </td>
             </tr>
             <tr>
-              <td>Image:</td>
+              <td>Image</td>
               <td>
                 <input type="file" onChange={handleImageChange} />
                 {stylePoint.image && (
