@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { setSelectedStylePointId } from '../../reducers/stylePointsSlice';
 import { useNavigate } from 'react-router-dom';
 
-// Abstracted API call into a separate function for better testing and reusability
 const fetchStylePoints = async () => {
   try {
     const response = await axios.get('/admin/style-points');
@@ -14,6 +13,35 @@ const fetchStylePoints = async () => {
     return []; // Return empty array in case of error to avoid app crash
   }
 };
+
+const StylePointsTable = ({ stylePoints, handleStylePointClick }) => (
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Select</th>
+      </tr>
+    </thead>
+    <tbody>
+      {stylePoints.map((stylePoint) => (
+        <tr key={stylePoint.id}>
+          <td>{stylePoint.id}</td>
+          <td>{stylePoint.title}</td>
+          <td>{stylePoint.description}</td>
+          <td>
+            <img src={stylePoint.image} alt={stylePoint.title} style={{ width: '100px', height: 'auto' }} />
+          </td>
+          <td>
+            <button onClick={() => handleStylePointClick(stylePoint.id)}>Select</button>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+);
 
 const StylePointsPage = () => {
   const [stylePoints, setStylePoints] = useState([]);
@@ -37,32 +65,7 @@ const StylePointsPage = () => {
   return (
     <div>
       <h1>Style Points</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Image</th>
-            <th>Select</th>
-          </tr>
-        </thead>
-        <tbody>
-          {stylePoints.map((stylePoint) => (
-            <tr key={stylePoint.id}>
-              <td>{stylePoint.id}</td>
-              <td>{stylePoint.title}</td>
-              <td>{stylePoint.description}</td>
-              <td>
-                <img src={stylePoint.image} alt={stylePoint.title} style={{ width: '100px', height: 'auto' }} />
-              </td>
-              <td>
-                <button onClick={() => handleStylePointClick(stylePoint.id)}>Select</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <StylePointsTable stylePoints={stylePoints} handleStylePointClick={handleStylePointClick} />
     </div>
   );
 };

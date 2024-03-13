@@ -9,7 +9,7 @@
 ## 개발 환경 설정
 - 에디터(IDE, Code Editor):: VSCode
 - 필수 설치 소프트웨어: Node.js(v16.16.0), npm (v9.6.7)
-- 서버 통신: axios, proxy 9000 port
+- 서버 통신: axios(async - await), proxy 9000 port
 - 상태 관리: Redux - @reduxjs/toolki(모듈화)
 
 Material UI

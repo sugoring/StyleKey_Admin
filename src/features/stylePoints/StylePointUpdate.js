@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import { stylePointsSlice } from '../../reducers/stylePointsSlice';
 
 const StylePointUpdate = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [stylePoint, setStylePoint] = useState(null);
-  const selectedStylePointId = useSelector(
-    (state) => state.stylePoints.selectedStylePointId
-  );
 
   useEffect(() => {
     const fetchStylePoint = async () => {
@@ -50,32 +45,42 @@ const StylePointUpdate = () => {
     <div>
       <h2>Update Style Point</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Title:</label>
-          <input
-            type="text"
-            value={stylePoint.title}
-            onChange={(e) =>
-              setStylePoint({ ...stylePoint, title: e.target.value })
-            }
-          />
-        </div>
-        <div>
-          <label>Description:</label>
-          <textarea
-            value={stylePoint.description}
-            onChange={(e) =>
-              setStylePoint({ ...stylePoint, description: e.target.value })
-            }
-          />
-        </div>
-        <div>
-          <label>Image:</label>
-          <input type="file" onChange={handleImageChange} />
-          {stylePoint.image && (
-            <img src={stylePoint.image} alt="Style Point" width="200" />
-          )}
-        </div>
+        <table>
+          <tbody>
+            <tr>
+              <td>Title:</td>
+              <td>
+                <input
+                  type="text"
+                  value={stylePoint.title}
+                  onChange={(e) =>
+                    setStylePoint({ ...stylePoint, title: e.target.value })
+                  }
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Description:</td>
+              <td>
+                <textarea
+                  value={stylePoint.description}
+                  onChange={(e) =>
+                    setStylePoint({ ...stylePoint, description: e.target.value })
+                  }
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Image:</td>
+              <td>
+                <input type="file" onChange={handleImageChange} />
+                {stylePoint.image && (
+                  <img src={stylePoint.image} alt="Style Point" width="200" />
+                )}
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <button type="submit">Update</button>
       </form>
     </div>
