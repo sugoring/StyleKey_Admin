@@ -4,8 +4,8 @@ const initialState = {
   selectedBrandId: localStorage.getItem("selectedBrandId") || null,
 };
 
-const brandSlice = createSlice({
-  name: "brand",
+const brandsSlice = createSlice({
+  name: "brands",
   initialState,
   reducers: {
     setSelectedBrandId: (state, action) => {
@@ -15,6 +15,6 @@ const brandSlice = createSlice({
   },
 });
 
-export const { setSelectedBrandId } = brandSlice.actions;
-export const selectSelectedBrandId = (state) => state.brand.selectedBrandId;
-export default brandSlice.reducer;
+export const { setSelectedBrandId } = brandsSlice.actions;
+export const selectSelectedBrandId = (state) => state.brands.selectedBrandId;
+export default brandsSlice.reducer;
