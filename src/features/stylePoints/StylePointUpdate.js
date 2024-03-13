@@ -16,35 +16,22 @@ const StylePointUpdate = () => {
         console.error("Error fetching style point:", error);
       }
     };
-
     fetchStylePoint();
   }, [id]);
 
-  const handleImageChange = (event) => {
-    const file = event.target.files[0]; // Get the selected file
-    const reader = new FileReader(); // Initialize a file reader
-
-    reader.onloadend = () => {
-      // Once the reader finishes loading the file
-      // Set the stylePoint state with the updated image URL
-      setStylePoint({ ...stylePoint, image: reader.result });
-    };
-
-    // Read the file as a data URL (for preview)
-    reader.readAsDataURL(file);
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const response = await axios.put(`/admin/style-points/${id}`, stylePoint);
-      if ( response.status === 500 || response.data.code === 500 || response.code === 500
+      if (
+        response.status === 500 ||
+        response.data.code === 500 ||
+        response.code === 500
       ) {
         alert("서버 내부 오류가 발생하였습니다.");
       } else {
         navigate(`/stylepoint/${id}`);
-      } 
+      }
     } catch (error) {
       console.error("Error updating style point:", error);
       alert("Failed to update style point. Please try again later.");
@@ -90,9 +77,8 @@ const StylePointUpdate = () => {
             <tr>
               <td>Image</td>
               <td>
-                <input type="file" onChange={handleImageChange} />
                 {stylePoint.image && (
-                  <img src={stylePoint.image} alt="Style Point" width="200" />
+                  <img src={stylePoint.image} alt="Style Point" />
                 )}
               </td>
             </tr>

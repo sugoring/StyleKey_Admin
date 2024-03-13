@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import BrandDetails from '../brands/BrandDetails';
+
 
 function StylePointDetails() {
   const { id } = useParams();
@@ -24,6 +26,7 @@ function StylePointDetails() {
   }
 
   return (
+    <div>
     <div>
       <h2>Style Point Details</h2>
       <table>
@@ -52,6 +55,10 @@ function StylePointDetails() {
           </tr>
         </tbody>
       </table>
+    </div>
+    <div>
+<BrandDetails />
+    </div>
     </div>
   );
 }
