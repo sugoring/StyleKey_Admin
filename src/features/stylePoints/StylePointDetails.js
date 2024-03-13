@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import BrandDetails from '../brands/BrandDetails';
-
-
+import CoordinateLookDetails from '../coordinateLooks/CoordinateLookDetails';
+import CircularProgress from '@mui/material/CircularProgress';
 function StylePointDetails() {
   const { id } = useParams();
   const [stylePoint, setStylePoint] = useState(null);
@@ -22,7 +22,7 @@ function StylePointDetails() {
   }, [id]);
 
   if (!stylePoint) {
-    return <div>Loading...</div>;
+    return <div><CircularProgress color="secondary" /></div>;
   }
 
   return (
@@ -58,6 +58,9 @@ function StylePointDetails() {
     </div>
     <div>
 <BrandDetails />
+    </div>
+    <div>
+<CoordinateLookDetails />
     </div>
     </div>
   );

@@ -31,15 +31,15 @@ function App() {
           <Route path="/brand/:id/update" element={<BrandUpdate />} />
 
           <Route
-            path="/coordinate-look/:id"
+            path="/coordinatelook/:id"
             element={<CoordinateLookDetails />}
           />
           <Route
-            path="/coordinate-look/create"
+            path="/coordinatelook/create"
             element={<CoordinateLookCreate />}
           />
           <Route
-            path="/coordinate-look/:id/update"
+            path="/coordinatelook/:id/updates"
             element={<CoordinateLookUpdate />}
           />
         </Routes>
