@@ -35,6 +35,20 @@ function BrandDetails() {
     navigate(`/brand/${brandId}/update`);
   };
 
+  const handleDeleteBrand = async (brandId) => {
+    try {
+      // Perform the DELETE request to delete the brand
+      await axios.delete(`/admin/brands/${brandId}`);
+      // Filter out the deleted brand from the brands state
+      const updatedBrands = brands.filter(brand => brand.id !== brandId);
+      setBrands(updatedBrands);
+      // Optionally, show a success message or handle further UI updates
+    } catch (error) {
+      console.error("Error deleting brand:", error);
+      // Optionally, handle error (e.g., showing an error message)
+    }
+  };
+
   // Handling the case where selectedStylePointId is not set (e.g., direct navigation to the component without going through a selection process)
   if (!selectedStylePointId) {
     return <div>Please select a style point first.</div>;
@@ -42,8 +56,9 @@ function BrandDetails() {
 
   return (
     <div>
+  
+      <h2>Brand</h2>
       <button onClick={handleCreateBrand}>Create Brand</button>
-      <h2>Brand Details</h2>
       <table>
         <thead>
           <tr>
@@ -53,6 +68,7 @@ function BrandDetails() {
             <th>Website</th>
             <th>Brand Image</th>
             <th>Update</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -67,6 +83,9 @@ function BrandDetails() {
               </td>
               <td>
                 <button onClick={() => handleUpdateBrand(brand.id)}>Update</button>
+              </td>
+              <td>
+                <button onClick={() => handleDeleteBrand(brand.id)}>Delete</button>
               </td>
             </tr>
           ))}
