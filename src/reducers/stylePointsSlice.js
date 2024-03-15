@@ -1,11 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// initial state 생성
 const initialState = {
-  selectedStylePointId: localStorage.getItem('selectedStylePointId') || null,
+  selectedStylePointId: localStorage.getItem('selectedStylePointId') || 0,
 };
 
-// slice 생성 : createSlice (name, initialState, reducers)
 const stylePointsSlice = createSlice({
   name: 'stylePoints',
   initialState,
@@ -14,10 +12,13 @@ const stylePointsSlice = createSlice({
       state.selectedStylePointId = action.payload;
       localStorage.setItem('selectedStylePointId', action.payload);
     },
+    reset: () => {
+      localStorage.removeItem('selectedStylePointId');
+      return initialState;
+    },
   },
 });
 
-// export
-export const { setSelectedStylePointId } = stylePointsSlice.actions;
+export const { setSelectedStylePointId, reset } = stylePointsSlice.actions;
 export const selectSelectedStylePointId = (state) => state.stylePoints.selectedStylePointId;
 export default stylePointsSlice.reducer;

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  selectedCoordinateLookId: localStorage.getItem('selectedCoordinateLookId') || null,
+  selectedCoordinateLookId: localStorage.getItem('selectedCoordinateLookId') || 0,
 };
 
 const coordinateLooksSlice = createSlice({
@@ -12,9 +12,13 @@ const coordinateLooksSlice = createSlice({
       state.selectedCoordinateLookId = action.payload;
       localStorage.setItem('selectedCoordinateLookId', action.payload);
     },
+    reset: () => {
+      localStorage.removeItem('selectedCoordinateLookId');
+      return initialState;
+    },
   },
 });
 
-export const { setSelectedCoordinateLookId } = coordinateLooksSlice.actions;
+export const { setSelectedCoordinateLookId, reset } = coordinateLooksSlice.actions;
 export const selectSelectedCoordinateLookId = (state) => state.coordinateLooks.selectedCoordinateLookId;
 export default coordinateLooksSlice.reducer;
